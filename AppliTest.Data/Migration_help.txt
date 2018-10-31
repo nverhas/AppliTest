@@ -1,0 +1,19 @@
+﻿dotnet ef migrations -s ..\AppliTest\ add Creation -c AppliTestDbContext --verbose
+
+// ajout dans Creation.cs dans le Up pour l'ajout de PS: 
+    var repertoireSortie = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+    migrationBuilder.Sql(System.IO.File.ReadAllText(repertoireSortie + "\\Migrations\\PS_ArboAffectation.sql"));
+	migrationBuilder.Sql("Delete FROM LignesHeures"); 
+
+Créer une nouvelle migration :
+dotnet ef migrations -s ..\..\DealRH.WebApp\ add TRIGRAMME_LOTNUM_modif_ResultatRubrique -c DealRHDbContext --verbose
+dotnet ef migrations -s ..\..\DealRH.WebApp\ add ACV_LOT3_Prefecaturation -c DealRHDbContext --verbose
+
+dotnet ef migrations -s ..\..\DealRH.WebApp\ add JRL_LOT3_tableAvoirs_3 -c DealRHDbContext --verbose
+
+dotnet ef migrations -s ..\..\DealRH.WebApp\ add ACV_Precision_ReleveHeures -c DealRHDbContext --verbose
+
+
+Supprimer une migration : 
+1 Supprimer les fichiers
+2 dotnet ef migrations -s ..\..\DealRH.WebApp\ remove
